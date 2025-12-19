@@ -12,7 +12,6 @@
 
     <!-- Hero Section -->
     <section class="hero">
-
         <div class="hero-content">
             <h1 class="main-title">
                 <span class="title-word">Us</span>
@@ -51,6 +50,48 @@
         </div>
     </section>
 
+
+    <!-- Interactive Features Section - NEW -->
+    <section class="interactive-section">
+        <div class="container">
+            <h2 class="section-title">Just For Us</h2>
+            <p class="section-subtitle">Our special interactive space 💖</p>
+            
+            <div class="features-grid">
+                <!-- Virtual Hug Button -->
+                <div class="feature-card" data-animate>
+                    <div class="feature-icon">🤗</div>
+                    <h3>Send a Virtual Hug</h3>
+                    <button class="feature-btn hug-btn" onclick="sendHug()">Hug Me!</button>
+                    <p class="hug-counter">Hugs sent: <span id="hugCount">0</span></p>
+                </div>
+
+                <!-- Random Love Reason -->
+                <div class="feature-card" data-animate>
+                    <div class="feature-icon">💝</div>
+                    <h3>Why I Love You</h3>
+                    <p class="love-reason" id="loveReason">Click to see why you're amazing!</p>
+                    <button class="feature-btn" onclick="showLoveReason()">Tell Me ✨</button>
+                </div>
+
+                <!-- Quick Messages -->
+                <div class="feature-card" data-animate>
+                    <div class="feature-icon">💌</div>
+                    <h3>Quick Love Notes</h3>
+                    <div class="quick-messages">
+                        <button class="quick-msg-btn" onclick="sendQuickMessage('❤️')">❤️</button>
+                        <button class="quick-msg-btn" onclick="sendQuickMessage('😘')">😘</button>
+                        <button class="quick-msg-btn" onclick="sendQuickMessage('🥰')">🥰</button>
+                        <button class="quick-msg-btn" onclick="sendQuickMessage('💕')">💕</button>
+                        <button class="quick-msg-btn" onclick="sendQuickMessage('Miss you!')">Miss you!</button>
+                        <button class="quick-msg-btn" onclick="sendQuickMessage('Love you!')">Love you!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ 
     <!-- Photo Gallery Section -->
     <section class="gallery-section">
         <div class="container">
@@ -103,89 +144,106 @@
         </div>
     </section>
 
-   <!-- Her Gallery Section -->
-<section class="gallery-section">
-    <div class="container">
-        <h2 class="section-title">My Private Almbum 🔒</h2>
-        <p class="section-subtitle">Because she's the prettiest thing ever 💖</p>
+    <!-- Her Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <h2 class="section-title">My Private Album 🔒</h2>
+            <p class="section-subtitle">Because she's the prettiest thing ever 💖</p>
 
-        <div class="polaroid-grid">
-            <div class="polaroid" data-tilt>
-                <div class="polaroid-inner">
-                    <img src="5.jpg" alt="Her smile">
-                    <p class="polaroid-caption">That smile 🥹</p>
+            <div class="polaroid-grid">
+                <div class="polaroid" data-tilt>
+                    <div class="polaroid-inner">
+                        <img src="5.jpg" alt="Her smile">
+                        <p class="polaroid-caption">That smile 🥹</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="polaroid" data-tilt>
-                <div class="polaroid-inner">
-                    <img src="13.jpg" alt="Her candid">
-                    <p class="polaroid-caption">Effortlessly her ✨</p>
+                <div class="polaroid" data-tilt>
+                    <div class="polaroid-inner">
+                        <img src="13.jpg" alt="Her candid">
+                        <p class="polaroid-caption">Effortlessly her ✨</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="polaroid" data-tilt>
-                <div class="polaroid-inner">
-                    <img src="3.jpg" alt="Her cute moment">
-                    <p class="polaroid-caption">Cutest human alive 💕</p>
+                <div class="polaroid" data-tilt>
+                    <div class="polaroid-inner">
+                        <img src="3.jpg" alt="Her cute moment">
+                        <p class="polaroid-caption">Cutest human alive 💕</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="polaroid" data-tilt>
-                <div class="polaroid-inner">
-                    <img src="2.jpg" alt="Her vibe">
-                    <p class="polaroid-caption">Main character energy 👑</p>
+                <div class="polaroid" data-tilt>
+                    <div class="polaroid-inner">
+                        <img src="2.jpg" alt="Her vibe">
+                        <p class="polaroid-caption">Main character energy 👑</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="polaroid" data-tilt>
-                <div class="polaroid-inner">
-                    <img src="6.jpg" alt="Her laugh">
-                    <p class="polaroid-caption">That laugh 😭❤️</p>
+                <div class="polaroid" data-tilt>
+                    <div class="polaroid-inner">
+                        <img src="6.jpg" alt="Her laugh">
+                        <p class="polaroid-caption">That laugh 😭❤️</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="polaroid" data-tilt>
-                <div class="polaroid-inner">
-                    <img src="12.jpg" alt="Her being her">
-                    <p class="polaroid-caption">Always her, always perfect ✨</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Cute Talks Section -->
-<section class="gallery-section cute-talks">
-    <div class="container">
-        <h2 class="section-title">Cute Talks</h2>
-        <p class="section-subtitle">Late nights, long texts & too much love 💬💗</p>
-
-        <div class="polaroid-grid">
-            <div class="polaroid" data-tilt>
-                <div class="polaroid-inner">
-                    <img src="ss2.jpg" alt="Cute chat 1">
-                    <p class="polaroid-caption">The first "I love you" 💝</p>
-                </div>
-            </div>
-
-            <div class="polaroid" data-tilt>
-                <div class="polaroid-inner">
-                    <img src="ss1.jpg" alt="Cute chat 2">
-                    <p class="polaroid-caption">Random I-love-you texts 💕</p>
-                </div>
-            </div>
-
-            <div class="polaroid" data-tilt>
-                <div class="polaroid-inner">
-                    <img src="ss4.jpg" alt="Cute chat 3">
-                    <p class="polaroid-caption">The lore 🫶</p>
+                <div class="polaroid" data-tilt>
+                    <div class="polaroid-inner">
+                        <img src="12.jpg" alt="Her being her">
+                        <p class="polaroid-caption">Always her, always perfect ✨</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
+    <!-- Cute Talks Section -->
+    <section class="gallery-section cute-talks">
+        <div class="container">
+            <h2 class="section-title">Cute Talks</h2>
+            <p class="section-subtitle">Late nights, long texts & too much love 💬💗</p>
+
+            <div class="polaroid-grid">
+                <div class="polaroid" data-tilt>
+                    <div class="polaroid-inner">
+                        <img src="ss2.jpg" alt="Cute chat 1">
+                        <p class="polaroid-caption">The first "I love you" 💝</p>
+                    </div>
+                </div>
+
+                <div class="polaroid" data-tilt>
+                    <div class="polaroid-inner">
+                        <img src="ss1.jpg" alt="Cute chat 2">
+                        <p class="polaroid-caption">Random I-love-you texts 💕</p>
+                    </div>
+                </div>
+
+                <div class="polaroid" data-tilt>
+                    <div class="polaroid-inner">
+                        <img src="ss4.jpg" alt="Cute chat 3">
+                        <p class="polaroid-caption">The lore 🫶</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bucket List Section - NEW FEATURE -->
+    <section class="bucket-list-section">
+        <div class="container">
+            <h2 class="section-title">Our Bucket List</h2>
+            <p class="section-subtitle">Dreams we'll make come true together 🌟</p>
+            
+            <div class="bucket-list" data-animate>
+                <div class="bucket-input-area">
+                    <input type="text" id="bucketInput" placeholder="Add a dream..." maxlength="100">
+                    <button class="add-btn" onclick="addBucketItem()">Add ✨</button>
+                </div>
+                <div class="bucket-items" id="bucketItems">
+                    <!-- Bucket list items will be added here -->
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Timeline Section -->
     <section class="timeline-section">
@@ -197,21 +255,12 @@
                 <div class="timeline-item" data-animate>
                     <div class="timeline-marker">💕</div>
                     <div class="timeline-content">
-                        <h3>The Day We Met</h3>
+                        <h3>The Night after the trip</h3>
                         <p class="timeline-date">Where it all began</p>
-                        <p>The moment I saw you, I knew my life was about to change forever</p>
+                        <p>The moment I saw you, I knew my life was about to change</p>
                     </div>
                 </div>
-<!--                 
-                <div class="timeline-item" data-animate>
-                    <div class="timeline-marker">❤️</div>
-                    <div class="timeline-content">
-                        <h3>First Date</h3>
-                        <p class="timeline-date">Best day ever</p>
-                        <p>Butterflies, laughter, and the beginning of something beautiful</p>
-                    </div>
-                </div>
-                 -->
+
                 <div class="timeline-item" data-animate>
                     <div class="timeline-marker">💖</div>
                     <div class="timeline-content">
@@ -270,6 +319,23 @@
             </div>
         </div>
     </footer>
+
+    <!-- Countdown Modal - NEW -->
+    <div id="countdownModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeCountdownModal()">&times;</span>
+            <h2>Set Meeting Date 📅</h2>
+            <input type="datetime-local" id="meetingDateInput">
+            <button class="modal-btn" onclick="setMeetingDate()">Set Date 💕</button>
+        </div>
+    </div>
+
+    <!-- Hug Animation Overlay -->
+    <div id="hugOverlay" class="hug-overlay">
+        <div class="hug-animation">🤗</div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
     <script src="script.js"></script>
 </body>
