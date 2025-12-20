@@ -91,7 +91,8 @@ body {
 }
 
 .main-title {
-  font-size: clamp(3.5rem, 9vw, 6rem);
+   font-size: clamp(2.5rem, 8vw, 5rem);
+   
   margin-bottom: 1rem;
   text-shadow: 0 6px 20px rgba(0, 0, 0, 0.9), 0 0 30px rgba(255, 143, 171, 0.7);
   font-weight: 800;
@@ -204,12 +205,12 @@ body {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1rem;
 }
 
 /* Section Titles */
 .section-title {
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-size: clamp(1.8rem, 8vw, 3rem);
   text-align: center;
   margin-bottom: 1rem;
   background: var(--gradient-primary);
@@ -395,8 +396,10 @@ body {
     backdrop-filter: blur(10px);
     border-radius: 30px;
     padding: 2rem;
-    max-width: 600px;
+    width: 100%;
+    max-width: none;
     margin: 0 auto;
+    box-sizing: border-box;
     box-shadow: 0 15px 35px rgba(30, 215, 96, 0.2);
     border: 1px solid rgba(30, 215, 96, 0.3);
 }
@@ -455,8 +458,10 @@ body {
     background: white;
     padding: 2rem;
     border-radius: 30px;
-    max-width: 500px;
+     width: 100%;
+    max-width: none;
     margin: 0 auto;
+    box-sizing: border-box;
     box-shadow: 0 15px 40px rgba(30, 215, 96, 0.15);
     border: 2px solid #1DB954;
 }
@@ -484,104 +489,6 @@ body {
     color: var(--text-light);
     margin-top: 10px;
 }
-
-/* AHD to GOA Bridge */
-.route-card {
-    background: white;
-    padding: 2.5rem;
-    border-radius: 30px;
-    display: flex;
-    justify-content: space-around; /* Changed from between */
-    align-items: center;
-    text-align: center;
-    margin: 1rem auto;
-    /* max-width: 900px; */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-}
-
-.city {
-    flex: 0 0 120px; /* Gives cities a fixed width so they don't jump */
-}
-
-.city-icon { font-size: 2.5rem; display: block; margin-bottom: 0.5rem; }
-
-.path-container {
-    flex: 1;
-    position: relative;
-    padding: 0 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.plane-path {
-    width: 100%;
-    height: 2px;
-    border-top: 2px dashed var(--pink-medium);
-    position: relative;
-    margin: 30px 0; /* Space for the plane to fly */
-}
-
-.plane {
-    position: absolute;
-    top: -18px; /* Perfectly sits on the line */
-    left: 0;
-    font-size: 1.8rem;
-    transition: left 0.5s ease; /* Smoother movement */
-    animation: flyPlane 8s linear infinite;
-}
-
-@keyframes flyPlane {
-    0% { left: 0%; transform: scaleX(1); }
-    48% { transform: scaleX(1); }
-    50% { left: 100%; transform: scaleX(-1); }
-    98% { transform: scaleX(-1); }
-    100% { left: 0%; transform: scaleX(1); }
-}
-
-.distance-text {
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: var(--pink-accent);
-    background: #fff0f3;
-    padding: 8px 20px;
-    border-radius: 20px;
-    white-space: nowrap;
-}
-
-/* .distance-text { font-weight: 700; color: var(--pink-accent); } */
-.distance-subtext { font-size: 0.8rem; color: var(--text-light); font-style: italic; }
-
-.update-loc-btn {
-    margin-top: 15px;
-    padding: 8px 15px;
-    background: var(--pink-soft);
-    border: 1px solid var(--pink-accent);
-    color: var(--pink-accent);
-    border-radius: 20px;
-    font-size: 0.8rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.update-loc-btn:hover {
-    background: var(--pink-accent);
-    color: white;
-}
-
-.distance-text {
-    font-size: 1.4rem;
-    font-weight: 800;
-    color: var(--pink-accent);
-    background: #fff0f3;
-    padding: 5px 15px;
-    border-radius: 15px;
-    display: inline-block;
-}
-
-
-
-
 
 /* Interactive Features Section - NEW */
 .interactive-section {
@@ -1253,7 +1160,8 @@ body {
 /* Responsive Design */
 @media (max-width: 768px) {
   .main-title {
-    font-size: 3rem;
+    font-size: 2.5rem !important; 
+
     flex-direction: column;
     gap: 0.5rem;
   }
@@ -1351,4 +1259,98 @@ body {
     0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
     50% { opacity: 1; transform: translate(-50%, -80%) scale(1.2); }
     100% { opacity: 0; transform: translate(-50%, -150%) scale(1); }
+}
+
+
+
+
+
+
+
+/* --- MOBILE RESPONSIVENESS OVERRIDES --- */
+
+@media (max-width: 768px) {
+    /* 1. Fix the Route Section (Vertical Layout) */
+    .route-card {
+        flex-direction: column;
+        padding: 2rem 1.5rem;
+        width: calc(100% - 2rem); /* Gives it exactly the same margin as other cards */
+        margin: 1rem auto;        /* Centers it with consistent spacing */
+        gap: 1.5rem;
+    }
+
+    .path-container {
+        width: 100%;
+        max-width: none;
+        order: 2; /* Put distance in the middle */
+        margin: 1.5rem 0;
+    }
+
+    .city:first-child { order: 1; } /* My City on top */
+    .city:last-child { order: 3; }  /* Her City on bottom */
+
+    .plane-path {
+        width: 2px;
+        height: 60px; /* Vertical dashed line */
+        margin: 15px auto;
+        border-top: none;
+        border-left: 2px dashed var(--pink-medium);
+    }
+
+    .plane {
+        left: -13px !important;
+        top: 0;
+        transform: rotate(90deg); /* Point plane downwards */
+        animation: flyPlaneVertical 4s linear infinite;
+    }
+
+    @keyframes flyPlaneVertical {
+        0% { top: 0%; }
+        50% { top: 100%; }
+        100% { top: 0%; }
+    }
+
+    /* 2. Fix Hero Section Text */
+    .main-title {
+        font-size: 2.5rem !important; 
+        line-height: 1.1;
+    }
+
+    .hero-content {
+        padding: 2rem 1rem;
+        width: 95%;
+    }
+
+    /* 3. Fix Photo Gallery (Stack to 1 column) */
+    .polaroid-grid {
+        grid-template-columns: 1fr !important;
+        gap: 2rem;
+        padding: 0 10px;
+    }
+
+    .polaroid img {
+        height: 250px; /* Slightly shorter for mobile screens */
+    }
+
+    /* 4. Fix Counter Boxes */
+    .counter-display {
+        gap: 0.5rem;
+    }
+
+    .counter-number {
+        font-size: 2rem !important;
+    }
+
+    .counter-label {
+        font-size: 0.8rem;
+    }
+
+    /* 5. Fix Bucket List Input */
+    .bucket-input-area {
+        flex-direction: column;
+    }
+
+    .add-btn {
+        width: 100%;
+    }
 }
