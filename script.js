@@ -31,6 +31,98 @@ function updateCounter() {
 setInterval(updateCounter, 1000);
 updateCounter();
 
+
+// --- DYNAMIC LOCATION & DISTANCE ---
+
+// 1. Calculate Distance (Haversine Formula)
+function getDistance(lat1, lon1, lat2, lon2) {
+    const R = 6371; // Radius of the earth in km
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLon = (lon2 - lon1) * Math.PI / 180;
+    const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+              Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
+              Math.sin(dLon/2) * Math.sin(dLon/2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    return (R * c).toFixed(1); // Distance in km
+}
+
+// 2. Get City Name from Coordinates (Reverse Geocoding)
+async function getCityName(lat, lon, elementId) {
+    try {
+        // We add &accept-language=en to stop it from showing Hindi/Gujarati
+        const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&accept-language=en`);
+        const data = await response.json();
+        
+        // Try to get city, then town, then suburb
+        const city = data.address.city || data.address.town || data.address.suburb || data.address.state || "Somewhere cute";
+        document.getElementById(elementId).textContent = city;
+    } catch (error) {
+        console.log("Error getting city name");
+        document.getElementById(elementId).textContent = "Error Locating";
+    }
+}
+
+
+
+// 3. Share Location to Firebase
+function shareLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+            const { latitude, longitude } = position.coords;
+            
+            // We'll use a simple prompt to identify who is who the first time
+            // Or you can hardcode this: const userId = "boy";
+            let userId = localStorage.getItem("ldr_user_id");
+            if (!userId) {
+                userId = confirm("Are you the Boyfriend? (Cancel for Girlfriend)") ? "boy" : "girl";
+                localStorage.setItem("ldr_user_id", userId);
+            }
+
+            db.collection("locations").doc(userId).set({
+                lat: latitude,
+                lon: longitude,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
+            });
+            
+            getCityName(latitude, longitude, userId === "boy" ? "myCityName" : "herCityName");
+        });
+    } else {
+        alert("Geolocation is not supported by this browser.");
+    }
+}
+
+// 4. Listen for Location Changes
+db.collection("locations").onSnapshot((snapshot) => {
+    let locData = {};
+    snapshot.forEach(doc => {
+        locData[doc.id] = doc.data();
+    });
+
+    if (locData.boy && locData.girl) {
+        const dist = getDistance(locData.boy.lat, locData.boy.lon, locData.girl.lat, locData.girl.lon);
+        document.getElementById("liveDistance").textContent = `${dist} km apart`;
+        
+        // If names are still "Locating...", update them
+        getCityName(locData.boy.lat, locData.boy.lon, "myCityName");
+        getCityName(locData.girl.lat, locData.girl.lon, "herCityName");
+    } else {
+        document.getElementById("liveDistance").textContent = "Waiting for both... ❤️";
+    }
+});
+
+// Run this on load
+window.onload = () => {
+    // Check if we already know who the user is and update location
+    if(localStorage.getItem("ldr_user_id")) {
+        shareLocation();
+    }
+};
+
+
+
+
+
+
 // --- 2. SYNCED VIRTUAL HUGS ---
 function sendHug() {
     const overlay = document.getElementById("hugOverlay");
